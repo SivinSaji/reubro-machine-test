@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('express-handlebars');
 var db = require('./config/connection')
+var session=require('express-session')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -21,6 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//Here we define the time of session
+app.use(session({secret:"key",cookie:{maxAge:60000000}}))
 
 //Database connection message
 db.connect((err) => {
