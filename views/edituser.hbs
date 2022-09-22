@@ -1,0 +1,25 @@
+<section>
+    <section>
+     <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div class="container mt-5 pl-5"></div>
+            <h2 class="text-center">Edit User</h2>
+            <form action="/signup" method="POST">
+            {{#if usersignUpErr}}
+            <p class="error">{{usersignUpErr}}</p>
+            {{/if}}
+               <label for="name">Name</label>
+                <input type="text" name="Name" placeholder="Name" class="form-control">
+                <label style="margin-top: 10px;" for="email">Email</label>
+                <input type="email" name="Email" placeholder="Email" class="form-control">
+                 <input type="text" name="Date" id="" value="" hidden>
+                <label style="margin-top: 10px;" for="password">Password</label>
+                <input type="password" name="Password" placeholder="Password" class="form-control"><br>
+                <button type="submit" class="btn btn" style="background-color: #212529; color: #fff;">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</section>
+</section>

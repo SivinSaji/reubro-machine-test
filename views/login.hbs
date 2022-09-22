@@ -1,0 +1,21 @@
+<section>
+     <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div class="container mt-5 pl-5"></div>
+            <h2 class="text-center">Login</h2>
+            <form action="/login" method="POST">
+            {{#if loginErr}}
+            <p class="error">{{loginErr}}</p>
+            {{/if}}
+                <label for="email">Email Address</label>
+                <input type="email" name="Email" placeholder="Email" class="form-control">
+                <label style="margin-top: 10px;" for="password">Password</label>
+                <input type="password" name="Password" placeholder="Password" class="form-control"><br>
+                <a href="/signup" class="float-right">Create account</a><br>
+                <button type="submit" class="btn btn" style="background-color: #212529; color: #fff;">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</section>
