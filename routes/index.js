@@ -14,7 +14,7 @@ const verifyLogin = (req, res, next) => {
 /* GET home page.*/
 router.get('/', async (req, res, next) => {
   let user = req.session.user
-    res.render('user/home', {});
+    res.render('home', {});
 
 })
 
@@ -43,11 +43,30 @@ router.post("/signup", function (req, res) {
 })
 
 
-/* GET home page. */
-router.get('/login', function(req, res, next) {
-  res.render('login', {});
-});
+/* GET login page. */
+router.get("/login", function (req, res) {
+  if (req.session.user) {
+    res.redirect('/')
+  } else {
+    res.render('login', { "loginErr": req.session.userLoginErr })
+    req.session.userLoginErr = false
+  }
+})
 
+/* POST login page.*/
+router.post('/login', (req, res) => {
+  userHelpers.doLogin(req.body).then((response) => {
+    if (response.status) {
+      req.session.user = response.user
+      req.session.userLoggedIn = true
+
+      res.redirect('/edituser')
+    } else {
+      req.session.userLoginErr = "Invalid username or password"
+      res.redirect('/login')
+    }
+  })
+})
 /* GET home page. */
 router.get('/edituser', function(req, res, next) {
   res.render('edituser', {});
